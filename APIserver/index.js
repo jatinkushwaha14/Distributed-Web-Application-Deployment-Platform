@@ -58,8 +58,8 @@ app.post('/build', async (req, res) => {
     // console.log('Received git URL:', giturl);
     const slug = generateSlug();
     const task = new RunTaskCommand({
-        cluster: 'arn:aws:ecs:ap-south-1:390844750176:cluster/builder-cluster',
-        taskDefinition: 'arn:aws:ecs:ap-south-1:390844750176:task-definition/builder-task',
+        cluster: process.env.CLUSTER_ARN,
+        taskDefinition: process.env.TASK_DEFINITION,
         launchType: 'FARGATE',
         count: 1,
         networkConfiguration: {
